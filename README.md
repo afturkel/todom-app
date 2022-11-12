@@ -1,8 +1,7 @@
 <br/>
 <p align="center">
   <a href="https://github.com/afturkel/Todom">
-
-    <img src="https://www.zupimages.net/up/22/45/ybtb.png" alt="Logo" width="80" height="80">
+  
   </a>
 <br/>
 <p align="center">
