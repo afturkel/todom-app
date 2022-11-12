@@ -61,11 +61,11 @@ The Project is not finished yet.
 
 Every item on the roadmap is an issue, with a label that indicates each of the following:
 
-- **version 1.0** UI almost complete. ✔️
+- **version 1.0**: UI almost complete. ✔️
 
-- **version 1.1** UI will be finished with a SQLite database integration. ✖️
+- **version 1.1**: UI will be finished with a SQLite database integration. ✖️
 
-- **version 1.2** Dark mode option for UI ✖️
+- **version 1.2**: Dark mode option for UI ✖️
 
 
 **release version dates**:
