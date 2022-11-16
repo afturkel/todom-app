@@ -2,10 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:todom_app/data/todo_service.dart';
-import 'add_task_details.dart';
+import '../data/todo_service.dart';
+import '../screens/showTaskInput.dart';
 import '../utils/colors.dart';
-import 'package:todom_app/models/todo.dart';
+import '../models/todo.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -76,17 +76,18 @@ class _HomePageState extends State<HomePage> {
       child: Scaffold(
         backgroundColor: MColors.background,
         appBar: AppBar(
-          toolbarHeight: 55,
+          toolbarHeight: 70,
           centerTitle: true,
           title: const Text(
             "Todom",
             style: TextStyle(
               fontFamily: 'SourceSerifPro',
               fontSize: 40,
-              color: MColors.titlec,
+              color: MColors.mainc,
             ),
           ),
-          backgroundColor: MColors.mainc,
+          backgroundColor: MColors.appBar,
+          elevation: 0,
         ),
         body: getTodoList(todos),
         floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
@@ -97,11 +98,16 @@ class _HomePageState extends State<HomePage> {
             color: MColors.titlec,
           ),
           onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => AddTaskMenu(), //ManageNote(),
-              ),
+            showModalBottomSheet(
+              context: context,
+              isScrollControlled: true,
+              builder: (context) => SingleChildScrollView(
+                child: Container(
+                  padding: EdgeInsets.only(
+                    bottom: MediaQuery.of(context).viewInsets.bottom),
+                  child: BottomSheetExample(),
+                  ),
+                ),
             );
           },
         ),
@@ -138,13 +144,13 @@ class _HomePageState extends State<HomePage> {
       itemBuilder: (context, index) {
         return Card(
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(5.0),
+            borderRadius: BorderRadius.circular(15.0),
           ),
           color: MColors.mainc,
-          elevation: 5.0,
+          elevation: 0,
           child: ListTile(
             dense: true,
-            visualDensity: const VisualDensity(vertical: 3),
+            visualDensity: const VisualDensity(vertical: 4),
             title: Text(
               todos[index].title,
               style: const TextStyle(
