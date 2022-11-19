@@ -1,4 +1,6 @@
-# Todom, Simple and Minimal To-Do App with Flutter
+# Todom
+
+Simple and Minimal To-Do App with Flutter
 
 ## Getting Started
 
