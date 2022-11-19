@@ -1,6 +1,4 @@
-# todom
-
-A new Flutter project.
+# Todom, Simple and Minimal To-Do App with Flutter
 
 ## Getting Started
 
