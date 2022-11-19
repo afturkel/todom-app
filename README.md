@@ -1,6 +1,6 @@
 # Todom
 
-Simple and Minimal To-Do App with Flutter
+Simple and Minimal To-Do App with Flutter. You can switch between Clear and Dark Mode while using. SQLite used for Back-end.
 
 ## Getting Started
 
