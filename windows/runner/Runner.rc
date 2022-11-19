@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "todom_app" "\0"
+            VALUE "FileDescription", "todom" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "todom_app" "\0"
+            VALUE "InternalName", "todom" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2022 com.example. All rights reserved." "\0"
-            VALUE "OriginalFilename", "todom_app.exe" "\0"
-            VALUE "ProductName", "todom_app" "\0"
+            VALUE "OriginalFilename", "todom.exe" "\0"
+            VALUE "ProductName", "todom" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

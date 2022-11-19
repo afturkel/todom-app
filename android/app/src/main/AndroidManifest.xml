@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.todom_app">
+    package="com.example.todom">
    <application
-        android:label="todom_app"
+        android:label="todom"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
