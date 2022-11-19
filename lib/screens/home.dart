@@ -11,12 +11,10 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  // All journals
   List<Map<String, dynamic>> _tasks = [];
 
   bool _isLoading = true;
 
-  // This function is used to fetch all data from the database
   void _reloadTaskList() async {
     final data = await SQLHelper.getItems();
     setState(() {
@@ -46,7 +44,6 @@ class _HomePageState extends State<HomePage> {
                   backgroundColor: MColors.noc,
                 ),
                 onPressed: () => Navigator.pop(context, false),
-                //color: MColors.noc,
                 child: const Text(
                   "No",
                   style: TextStyle(
@@ -59,7 +56,6 @@ class _HomePageState extends State<HomePage> {
                   backgroundColor: MColors.yesc,
                 ),
                 onPressed: () => Navigator.pop(context, true),
-                //color: MColors.yesc,
                 child: const Text(
                   "Yes",
                   style: TextStyle(
@@ -76,18 +72,15 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    _reloadTaskList(); // Loading the diary when the app starts
+    _reloadTaskList();
   }
 
   final TextEditingController _titleController = TextEditingController();
   final TextEditingController _descriptionController = TextEditingController();
 
-  // This function will be triggered when the floating button is pressed
-  // It will also be triggered when you want to update an item
   void _showForm(int? id) async {
     if (id != null) {
-      // id == null -> create new item
-      // id != null -> update an existing item
+
       final existingJournal =
           _tasks.firstWhere((element) => element['id'] == id);
       _titleController.text = existingJournal['task'];
@@ -107,7 +100,6 @@ class _HomePageState extends State<HomePage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 mainAxisSize: MainAxisSize.min,
-                //crossAxisAlignment: CrossAxisAlignment.end,
                 children: <Widget>[
                   const Text(
                     'Add Tasks',
@@ -138,7 +130,6 @@ class _HomePageState extends State<HomePage> {
                   ),
                   TextButton(
                     onPressed: () async {
-                      // Save new journal
                       if (id == null) {
                         await _addItem();
                       }
@@ -147,11 +138,9 @@ class _HomePageState extends State<HomePage> {
                         await _updateItem(id);
                       }
 
-                      // Clear the text fields
                       _titleController.text = '';
                       _descriptionController.text = '';
 
-                      // Close the bottom sheet
                       Navigator.of(context).pop();
                     },
                     style: ButtonStyle(
@@ -171,21 +160,18 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-// Insert a new journal to the database
   Future<void> _addItem() async {
     await SQLHelper.createItem(
         _titleController.text, _descriptionController.text);
     _reloadTaskList();
   }
 
-  // Update an existing journal
   Future<void> _updateItem(int id) async {
     await SQLHelper.updateItem(
         id, _titleController.text, _descriptionController.text);
     _reloadTaskList();
   }
 
-  // Delete an item
   void _deleteItem(int id) async {
     await SQLHelper.deleteItem(id);
     _reloadTaskList();
@@ -243,7 +229,10 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                     trailing: IconButton(
-                      icon: const Icon(Icons.done, color: Colors.white, size: 30,
+                      icon: const Icon(
+                        Icons.done,
+                        color: Colors.white,
+                        size: 30,
                       ),
                       onPressed: () {
                         _deleteItem(_tasks[index]['id']);
@@ -271,11 +260,15 @@ class _HomePageState extends State<HomePage> {
           child: Row(
             mainAxisSize: MainAxisSize.max,
             children: [
-              IconButton(onPressed: (() {
-                AdaptiveTheme.of(context).toggleThemeMode();
-              }), icon: const Icon(
-                Icons.dark_mode_outlined, size: 30, color: Colors.white,
-              ),
+              IconButton(
+                onPressed: (() {
+                  AdaptiveTheme.of(context).toggleThemeMode();
+                }),
+                icon: const Icon(
+                  Icons.dark_mode_outlined,
+                  size: 30,
+                  color: Colors.white,
+                ),
               ),
             ],
           ),
